@@ -1,0 +1,7 @@
+.container {
+    width: 100%;
+    height: fit-content;
+    background: rgb(0, 196, 204);
+    background: linear-gradient(76deg, rgba(0, 196, 204, 1) 0%, rgba(51, 87, 218, 1) 47%, rgba(123, 44, 231, 1) 100%);
+
+}
