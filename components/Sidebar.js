@@ -1,11 +1,9 @@
-import Image from "next/image"
 import { useState } from 'react'
-import logo from '../public/img/logo.png'
-import { ImMobile } from "react-icons/im";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome, AiFillSetting } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
-import auth from "../firebase.init";
-import { useSignOut } from "react-firebase-hooks/auth";
+import { RiSendPlaneFill } from "react-icons/ri";
+import { MdManageAccounts } from "react-icons/md";
+import { IoIosColorPalette } from "react-icons/io";
 import Modal from "./shared/Modals";
 export default function Sidebar() {
   const [Delete, setDelete] = useState(false)
@@ -174,39 +172,57 @@ export default function Sidebar() {
   ]
   return (
     <>
-      {/* {ModalShow} */}
       {Delete && <Modal Delete={Delete} setDelete={setDelete} />}
-
-      <div className="h-[89.7vh] px-5 shadow-2xl ">
-        <ImMobile />
-        <div>
-          <label htmlFor="brand" className="font-medium">Mobile's Brand </label> <br />
-          <select id="brand" className="border outline-none  shadow w-[200px] px-2 py-1 rounded-lg mt-2">
-            <option defaultValue className="">selected</option>
-            {
-              Brand.map(brand => <option value={brand.value} key={brand._id}>{brand.Names}</option>)
-            }
-          </select>
-        </div>
-        <div className="mt-2">
-          <label htmlFor="price" className="font-medium ">Mobile's Price ৳</label> <br />
-          <select id="price" className="border outline-none  shadow w-[200px] px-2 py-1 rounded-lg mt-2">
-            <option defaultValue >selected</option>
-            {
-              price.map(pc => <option value={pc.value} key={pc._id}>{pc.price}</option>)
-            }
-          </select>
-        </div>
+      <main data-aos="fade-right" className="h-[89.7vh] p-5 shadow-2xl rounded-sm flex flex-col justify-between ">
+        <section >
+          <div>
+            <label htmlFor="brand" className="text-md font-medium">Mobile's Brand </label> <br />
+            <select id="brand" className="border outline-none  shadow w-[200px] px-2 py-1 rounded-lg mt-2">
+              <option defaultValue className="">selected</option>
+              {
+                Brand.map(brand => <option value={brand.value} key={brand._id}>{brand.Names}</option>)
+              }
+            </select>
+          </div>
+          <div className="mt-2">
+            <label htmlFor="price" className="text-mc font-medium ">Mobile's Price ৳</label> <br />
+            <select id="price" className="border outline-none  shadow w-[200px] px-2 py-1 rounded-lg mt-2">
+              <option defaultValue >selected</option>
+              {
+                price.map(pc => <option value={pc.value} key={pc._id}>{pc.price}</option>)
+              }
+            </select>
+          </div>
+        </section>
         {/* ================ menu styles ============  */}
-        <div className="flex gap-5 items-center">
-          <AiOutlineHome size={25} />
-          <span className="text-[20px]">Home</span>
-        </div>
-        <div onClick={() => setDelete(!Delete)} className="flex gap-5 items-center cursor-pointer">
-          <FiLogOut size={25} />
-          <span className="text-[20px]">Log out</span>
-        </div>
-      </div >
+        <section className="flex flex-col gap-4">
+          <div className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white" >
+            <AiOutlineHome size={20} />
+            <span className="text-[20px]">Buy </span>
+          </div>
+          <div className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white">
+            <RiSendPlaneFill size={20} />
+            <span className="text-[20px]">Request</span>
+          </div>
+          <div className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white">
+            <MdManageAccounts size={20} />
+            <span className="text-[20px] ">Profile</span>
+          </div>
+          <div className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white">
+            <AiFillSetting size={20} />
+            <span className="text-[20px] cursor-pointer">Setting</span>
+          </div>
+          <div className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white">
+            <IoIosColorPalette size={20} />
+            <span className="text-[20px]">Theme</span>
+          </div>
+
+          <div onClick={() => setDelete(!Delete)} className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white">
+            <FiLogOut size={20} />
+            <span className="text-[20px]">Log out</span>
+          </div>
+        </section>
+      </main >
     </>
 
   )

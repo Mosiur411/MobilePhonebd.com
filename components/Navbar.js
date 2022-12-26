@@ -5,13 +5,13 @@ import { AiOutlineMenuUnfold } from "react-icons/ai";
 import profileImages from '../public/img/userImg.jpg'
 import { FaShoppingCart } from "react-icons/fa";
 import { BiSearchAlt2 } from "react-icons/bi";
-import Link from 'next/link';
 import LoginModals from './auth/LoginModals';
 import RegisterModals from './auth/RegisterModals';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
-import Loading from './shared/Loading';
+import { useRouter } from 'next/router';
 export default function Navbar({ setMenu, menu }) {
+    const router = useRouter()
     const [user, loading, error] = useAuthState(auth);
     const { theme, setTheme } = useTheme()
     const [Login, setLogin] = useState(false)
@@ -28,13 +28,13 @@ export default function Navbar({ setMenu, menu }) {
 
     }
     return (
-        <div className='sticky top-0 border-b-2 shadow-md flex justify-between items-center px-5'>
+        <div className={`sticky top-0 border-b-2 shadow-md flex justify-between items-center ${user ? 'px-5' : 'p-4'}`}>
             <div className='flex items-center gap-3'>
                 <AiOutlineMenuUnfold size={24} className="cursor-pointer" onClick={() => setMenu(!menu)} />
-                <span className='text-xl fon-bold'>MobilePhone</span>
+                <span className='text-xl font-bold cursor-pointer' onClick={() => router.push('/')}><span className='text-[#01BFCA]'>Mobile</span><span className='text-[#762FE6]'>Phone</span></span>
             </div>
             <div className='flex justify-start items-center '>
-                <input type='text Mobile' className='border-2' placeholder='search mobile' />
+                <input type='text Mobile' className='border-2 outline-none shadow-md rounded-md  px-3 py-1 w-[320px]' placeholder='search mobile' />
                 <BiSearchAlt2 className='ml-[-20px]' />
             </div>
             <div className='flex  justify-center items-center gap-6'>
@@ -76,7 +76,7 @@ export default function Navbar({ setMenu, menu }) {
                         }
                     </div>
                 }
-                {!user && <button className='' onClick={() => setLogin(!Login)}>Login</button>}
+                {!user && <button className='bg-[#762FE6] text-white font-bold text-center px-8 py-2 rounded-md' onClick={() => setLogin(!Login)}>Login</button>}
                 {
                     Login && <LoginModals Login={Login} setLogin={setLogin} handleAccount={handleAccount} />
                 }

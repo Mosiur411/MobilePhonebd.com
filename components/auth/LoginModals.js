@@ -28,9 +28,9 @@ export default function LoginModals({ Login, setLogin, handleAccount }) {
         }
     }
     return (
-        <main className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-50">
+        <main  className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity 50">
             <main className='w-full h-[100vh] flex justify-center items-center  '>
-                <div className="relative w-[400px] flex flex-col min-w-0 break-words mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
+                <div data-aos="zoom-in"  className="relative w-[400px] flex flex-col min-w-0 break-words mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
                     <div className="rounded-t mb-0 px-6 py-6">
                         <div className="text-right mb-3">
                             <button className="text-right" onClick={() => setLogin(!Login)}><AiOutlineCloseCircle size={20} /></button>

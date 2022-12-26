@@ -1,5 +1,5 @@
 import styles from '../styles/color.module.css'
-import { BiSearchAlt2 } from "react-icons/bi";
+import CardMobile from '../components/shared/CardMobile'
 import apple from '../public/img/mobile/apple.png'
 import infinix from '../public/img/mobile/infinix.png'
 import iter from '../public/img/mobile/iter.png'
@@ -105,22 +105,31 @@ export default function Home() {
   return (
     < >
       <div className='px-5'>
-        <div className={`${styles.container} p-2`} >
-          <h1 className="text-xl font-extrabold text-[#EAF2FA] text-center"> What will you Mobile  Today ?</h1>
+        <div className={`${styles.container} p-5 rounded-md`} >
+          <h1 className="text-2xl font-extrabold text-[#EAF2FA] text-center"> Site last updated on December 22, 2022</h1>
           <div className='w-[50%] z-40 mx-auto py-4'>
-            {/* <BiSearchAlt2 className='top-7 left-1' /> */}
             <input type='text Mobile' className='w-full border-2 px-5 py-1 rounded outline-none' placeholder='search mobile' />
           </div>
           <div className='flex justify-center'>
             {
               Brand.map((img) => <Image
-              key={img?._id}
+                key={img?._id}
                 className='w-16 h-16 p-2 rounded-full cursor-pointer'
                 src={img?.img}
                 alt='profile images'
               />)
             }
           </div>
+        </div>
+        {/*  ============= product card ============= */}
+        <div className='grid md:grid-cols-4 gap-7 py-2'>
+          <CardMobile />
+          <CardMobile />
+          <CardMobile />
+          <CardMobile />
+          <CardMobile />
+          <CardMobile />
+          <CardMobile />
         </div>
       </div>
     </>
