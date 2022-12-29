@@ -1,4 +1,3 @@
-import styles from '../styles/color.module.css'
 import CardMobile from '../components/shared/CardMobile'
 import apple from '../public/img/mobile/apple.png'
 import infinix from '../public/img/mobile/infinix.png'
@@ -15,7 +14,30 @@ import vivo from '../public/img/mobile/VIVO-icon.png'
 import walton from '../public/img/mobile/walton.png'
 import Xiaomi from '../public/img/mobile/Xiaomi_logo.svg.png'
 import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
+import { hiddenInput } from '../app/features/scroll/scrollSlice'
 export default function Home() {
+  const dispatch = useDispatch()
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  if (scrollPosition >= 74) {
+    dispatch(hiddenInput(false))
+  } else {
+    dispatch(hiddenInput(true))
+  }
+
   const Brand = [
     {
       _id: 1,
@@ -104,8 +126,8 @@ export default function Home() {
   ]
   return (
     < >
-      <div className='px-5'>
-        <div className={`${styles.container} p-5 rounded-md`} >
+      <div className='px-5 '>
+        <div className={`containerImages  p-5 rounded-md `} >
           <h1 className="text-2xl font-extrabold text-[#EAF2FA] text-center"> Site last updated on December 22, 2022</h1>
           <div className='w-[50%] z-40 mx-auto py-4'>
             <input type='text Mobile' className='w-full border-2 px-5 py-1 rounded outline-none' placeholder='search mobile' />

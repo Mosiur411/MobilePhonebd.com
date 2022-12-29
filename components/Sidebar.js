@@ -4,8 +4,11 @@ import { FiLogOut } from "react-icons/fi";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { MdManageAccounts } from "react-icons/md";
 import { IoIosColorPalette } from "react-icons/io";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import Modal from "./shared/Modals";
+import { useRouter } from 'next/router';
 export default function Sidebar() {
+  const router = useRouter()
   const [Delete, setDelete] = useState(false)
   const price = [
     {
@@ -173,10 +176,10 @@ export default function Sidebar() {
   return (
     <>
       {Delete && <Modal Delete={Delete} setDelete={setDelete} />}
-      <main data-aos="fade-right" className="h-[89.7vh] p-5 shadow-2xl rounded-sm flex flex-col justify-between ">
+      <main  data-aos="fade-right" className="min-w-fit sliderHeight sticky top-[74px] p-5 shadow-2xl rounded-sm flex flex-col justify-between ">
         <section >
           <div>
-            <label htmlFor="brand" className="text-md font-medium">Mobile's Brand </label> <br />
+            <label htmlFor="brand" className="text-md font-medium">Mobile's Brand</label> <br />
             <select id="brand" className="border outline-none  shadow w-[200px] px-2 py-1 rounded-lg mt-2">
               <option defaultValue className="">selected</option>
               {
@@ -196,6 +199,14 @@ export default function Sidebar() {
         </section>
         {/* ================ menu styles ============  */}
         <section className="flex flex-col gap-4">
+          {/* admin control  website  start*/}
+          <div onClick={() => router.push('/dashboard/AddProduct')} className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white" >
+            <MdOutlineProductionQuantityLimits size={20} />
+            <span className="text-[20px]">Add Product</span>
+          </div>
+
+
+          {/* admin control  website   ent */}
           <div className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white" >
             <AiOutlineHome size={20} />
             <span className="text-[20px]">Buy </span>

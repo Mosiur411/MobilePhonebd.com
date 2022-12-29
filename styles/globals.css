@@ -2,11 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+.containerImages {
+    height: fit-content;
+    background: rgb(0, 196, 204);
+    background: linear-gradient(76deg, rgba(0, 196, 204, 1) 0%, rgba(51, 87, 218, 1) 47%, rgba(123, 44, 231, 1) 100%);
 
-/* 
-background: rgb(0,196,204);
-background: linear-gradient(76deg, rgba(0,196,204,1) 0%, rgba(51,87,218,1) 47%, rgba(123,44,231,1) 100%);
+}
+
+.containerButton {
+    width: 100%;
+    height: fit-content;
+    background: rgb(0, 196, 204);
 
 
+}
 
-*/
+.containerButton:hover {
+    background: rgba(123, 44, 231, 1);
+    transition: 0.7s all ease-in-out;
+}
+
+/* img effect  */
+.images {
+    width: 100%;
+    transition: 0.5s all ease-in-out;
+}
+
+.images:hover {
+    transform: scale(1.2);
+}
+
+/* slider height  */
+.sliderHeight {
+    height: calc(100vh - 74px);
+
+}

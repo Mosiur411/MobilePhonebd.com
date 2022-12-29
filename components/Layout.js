@@ -9,8 +9,10 @@ export function Layout({ children }) {
         <>
             <div className="">
                 <Navbar setMenu={setMenu} menu={menu} />
-                <div className="flex ">
-                    {!menu && <Sidebar  />}
+                <div className="flex">
+                    <div>
+                        {!menu && <Sidebar />}
+                    </div>
                     <div className="flex-1">
                         <main>{children}</main>
                     </div>

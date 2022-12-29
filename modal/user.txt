@@ -1,0 +1,9 @@
+
+country
+distr
+upajela
+poster code 
+uniyen
+vilage
+phone
+nid
