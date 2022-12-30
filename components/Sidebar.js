@@ -176,11 +176,11 @@ export default function Sidebar() {
   return (
     <>
       {Delete && <Modal Delete={Delete} setDelete={setDelete} />}
-      <main  data-aos="fade-right" className="min-w-fit sliderHeight sticky top-[74px] p-5 shadow-2xl rounded-sm flex flex-col justify-between ">
+      <main  data-aos="fade-right" className="min-w-fit sliderHeight sticky  dark:bg-slate-900  top-[74px] p-5 shadow-2xl rounded-sm flex flex-col justify-between ">
         <section >
           <div>
             <label htmlFor="brand" className="text-md font-medium">Mobile's Brand</label> <br />
-            <select id="brand" className="border outline-none  shadow w-[200px] px-2 py-1 rounded-lg mt-2">
+            <select id="brand" className="border outline-none  bg-white z-40 dark:bg-[#292938b9] shadow w-[200px] px-2 py-1 rounded-lg mt-2">
               <option defaultValue className="">selected</option>
               {
                 Brand.map(brand => <option value={brand.value} key={brand._id}>{brand.Names}</option>)
@@ -189,7 +189,7 @@ export default function Sidebar() {
           </div>
           <div className="mt-2">
             <label htmlFor="price" className="text-mc font-medium ">Mobile's Price ৳</label> <br />
-            <select id="price" className="border outline-none  shadow w-[200px] px-2 py-1 rounded-lg mt-2">
+            <select id="price" className="border outline-none  bg-white z-40 dark:bg-[#292938b9] shadow w-[200px] px-2 py-1 rounded-lg mt-2">
               <option defaultValue >selected</option>
               {
                 price.map(pc => <option value={pc.value} key={pc._id}>{pc.price}</option>)

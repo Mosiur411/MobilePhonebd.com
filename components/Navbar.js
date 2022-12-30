@@ -30,14 +30,14 @@ export default function Navbar({ setMenu, menu }) {
 
     }
     return (
-        <div className={`sticky top-0 border-b-2 shadow-md  bg-white z-50 flex justify-between items-center ${user ? 'px-5' : 'p-4'}`}>
+        <div className={`sticky top-0 border-b-2 dark:border-[#0C0D21] shadow-md  bg-white z-50 dark:bg-slate-900 flex justify-between items-center ${user ? 'px-5' : 'p-4'}`}>
             <div className='flex items-center gap-3'>
                 <AiOutlineMenuUnfold size={24} className="cursor-pointer" onClick={() => setMenu(!menu)} />
-                <span className='text-xl font-bold cursor-pointer' onClick={() => router.push('/')}><span className='text-[#01BFCA]'>Mobile</span><span className='text-[#762FE6]'>Phone</span></span>
+                <span className='text-xl font-bold cursor-pointer' onClick={() => router.push('/')}><span className='text-[#01BFCA] dark:text-[#762FE6]'>Mobile</span><span className='text-[#762FE6] dark:text-[#01BFCA]'>Phone</span></span>
             </div>
             {
                 !scroll && <div className='flex justify-start items-center '>
-                    <input type='text Mobile' className='border-2 outline-none shadow-md rounded-md  px-3 py-1 w-[320px]' placeholder='search mobile' />
+                    <input type='text Mobile' className='border-2 outline-none shadow-md rounded-md  px-3 py-1 w-[320px] dark:bg-[#292938b9]' placeholder='search mobile' />
                     <BiSearchAlt2 className='ml-[-20px]' />
                 </div>
             }
