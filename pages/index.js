@@ -17,6 +17,7 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import { hiddenInput } from '../app/features/scroll/scrollSlice'
+import Head from 'next/head'
 export default function Home() {
   const dispatch = useDispatch()
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -126,11 +127,16 @@ export default function Home() {
   ]
   return (
     < >
+      <Head>
+        <title>MobilePhone-Home</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name='description' content='Programming Articles' />
+      </Head>
       <div className='px-5 '>
         <div className={`containerImages  p-5 rounded-md `} >
           <h1 className="text-2xl font-extrabold text-[#EAF2FA] text-center"> Site last updated on December 22, 2022</h1>
           <div className='w-[50%] z-40 mx-auto py-4'>
-            <input type='text Mobile' className='w-full border-2 px-5 py-1 rounded outline-none' placeholder='search mobile' />
+            <input type='text Mobile' className='w-full bg-white  dark:bg-[#292938b9] border-2 px-5 py-1 rounded outline-none' placeholder='search mobile' />
           </div>
           <div className='flex justify-center'>
             {

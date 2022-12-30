@@ -189,7 +189,7 @@ export default function Sidebar() {
           </div>
           <div className="mt-2">
             <label htmlFor="price" className="text-mc font-medium ">Mobile's Price ৳</label> <br />
-            <select id="price" className="border outline-none  bg-white z-40 dark:bg-[#292938b9] shadow w-[200px] px-2 py-1 rounded-lg mt-2">
+            <select id="price" className="border outline-none z-40  bg-white  dark:bg-[#292938b9] shadow w-[200px] px-2 py-1 rounded-lg mt-2">
               <option defaultValue >selected</option>
               {
                 price.map(pc => <option value={pc.value} key={pc._id}>{pc.price}</option>)
