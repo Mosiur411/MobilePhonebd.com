@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import cardSlice from './features/card/cardSlice'
-import filterSlice from './features/filter/filterSlice'
 import scrollSlice from './features/scroll/scrollSlice'
+import {user} from './features/Api/user'
 const store = configureStore({
     reducer: {
-        card: cardSlice,
-        filter: filterSlice,
-        scroll: scrollSlice
-    }
+        scroll: scrollSlice,
+        [user.reducerPath]: user.reducer,
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(user.middleware)
+
 })
 export default store;

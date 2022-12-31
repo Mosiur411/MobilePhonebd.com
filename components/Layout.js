@@ -14,7 +14,7 @@ export function Layout({ children }) {
                         {!menu && <Sidebar />}
                     </div>
                     <div className="flex-1">
-                        <main>{children}</main>
+                        {/* <main>{children}</main> */}
                     </div>
                 </div>
             </div>

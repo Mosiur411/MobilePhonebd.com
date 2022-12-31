@@ -3,19 +3,41 @@ import { useState } from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { useAuthMutation } from "../../app/features/Api/user";
 import auth from "../../firebase.init";
+import Loading from "../shared/Loading";
 export default function LoginModals({ Login, setLogin, handleAccount }) {
+    const [PostUser, { isError, isLoading, isSuccess }] = useAuthMutation()
     const [email, setUserName] = useState('')
     const [password, setUserPassword] = useState('')
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-    if (user?.user?.uid) {
+    const [signInWithEmailAndPassword, singUser] = useSignInWithEmailAndPassword(auth);
+    const GoogleLogin = async () => {
+        const auth = await signInWithGoogle()
+        if (auth?.user?.uid) {
+            const data = {
+                email: auth?.user?.email,
+                uid: auth?.user?.uid
+            }
+            await PostUser(data)
+        }
+
+    }
+    if (isError || error) {
+        toast("error Login");
+
+    }
+    if (isLoading || loading) {
+        return <Loading />
+
+    }
+
+    if (isSuccess) {
         setLogin(!Login)
         toast("Successful Login");
+
     }
-    if (error) {
-        toast("error Login");
-    }
+
     const handelLogin = async (event) => {
         event.preventDefault()
         if (email && password) {
@@ -50,7 +72,7 @@ export default function LoginModals({ Login, setLogin, handleAccount }) {
                                     className="bg-white active:bg-gray-100 text-gray-800 px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
                                     type="button"
                                     style={{ transition: "all .15s ease" }}
-                                    onClick={() => signInWithGoogle()}
+                                    onClick={() => GoogleLogin()}
                                 >
                                     <img
                                         alt="..."

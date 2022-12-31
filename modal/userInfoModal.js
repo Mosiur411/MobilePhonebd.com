@@ -11,16 +11,22 @@ const userInfo = new Schema({
         required: true,
         unique: true
     },
+    uid: {
+        type: String,
+        trim: true,
+        required: true,
+        unique: true
+    },
     role: {
         type: Boolean,
         trim: true,
         default: false,
     },
-    ip: {
-        type: String,
-        trim: true,
-        required: true,
-    },
+    // ip: {
+    //     type: String,
+    //     trim: true,
+    //     required: true,
+    // },
     img: {
         type: String,
         trim: true,

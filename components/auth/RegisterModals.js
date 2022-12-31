@@ -1,22 +1,65 @@
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { useState } from "react";
 import auth from "../../firebase.init";
 import { toast } from "react-toastify";
 import Head from "next/head";
+import { useAuthMutation } from "../../app/features/Api/user";
+import Loading from "../shared/Loading";
 export default function RegisterModals({ Register, setRegister, handleAccount }) {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle] = useSignInWithGoogle(auth);
+    const [PostUser, { isError, isLoading, isSuccess }] = useAuthMutation()
     const [email, setUserName] = useState('')
     const [password, setUserPassword] = useState('')
     const [confirm, setConfirm] = useState('')
     const handelCreate = async (event) => {
         event.preventDefault()
         if (email && (password === confirm)) {
-            await createUserWithEmailAndPassword(email, password)
-            setRegister(!Register)
-            toast("Successful register");
+            const auth = await createUserWithEmailAndPassword(email, password)
+            if (auth?.user?.uid) {
+                const data = {
+                    email: auth?.user?.email,
+                    uid: auth?.user?.uid
+                }
+                await PostUser(data)
+            }
         }
     }
+    const GoogleLogin = async () => {
+        const auth = await signInWithGoogle()
+        if (auth?.user?.uid) {
+            const data = {
+                email: auth?.user?.email,
+                uid: auth?.user?.uid
+            }
+            await PostUser(data)
+        }
+
+    }
+    if (isError || error) {
+        toast("error Login");
+
+    }
+    if (isLoading || loading) {
+        return <Loading />
+
+    }
+    if (isSuccess) {
+        setRegister(!Register)
+        toast("Successful Login");
+
+    }
+
+
+
+
+
+
+
+
+
+
     return (
         <>
             <Head>
@@ -40,7 +83,7 @@ export default function RegisterModals({ Register, setRegister, handleAccount })
                                     className="bg-white active:bg-gray-100 text-gray-800 px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
                                     type="button"
                                     style={{ transition: "all .15s ease" }}
-                                    onClick={() => signInWithGoogle()}
+                                    onClick={() => GoogleLogin()}
                                 >
                                     <img
                                         alt="..."
