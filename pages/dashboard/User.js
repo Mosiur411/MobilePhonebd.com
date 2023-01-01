@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import { useGetInfoQuery, useDeleteInfoMutation } from '../../app/features/Api/user'
 import Loading from '../../components/shared/Loading.tsx'
 export default function User() {
@@ -6,8 +7,11 @@ export default function User() {
   if (isLoading) {
     return <Loading />
   }
-  const DeleteUser = (Id) => {
-    DeleteUserInfo({Id})
+  const DeleteUser = async (Id) => {
+    const data = await DeleteUserInfo({ Id })
+    if (data) {
+      toast("Success Delete")
+    }
   }
   return (
     <div className='p-10'>
