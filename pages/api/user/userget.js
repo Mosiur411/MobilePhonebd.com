@@ -4,6 +4,7 @@ import connectDatabase from "../../../utils/bd"
 const GetUser = async (req, res) => {
     try {
         await connectDatabase()
+        console.log("user ")
         const data = await UserModal.find({})
         return res.status(200).json({ data })
     } catch (err) {

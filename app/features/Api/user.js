@@ -5,6 +5,7 @@ export const user = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: URL
     }),
+    tagTypes: ['user'],
     endpoints: (builder) => ({
         auth: builder.mutation({
             query: (data) => ({
@@ -12,7 +13,21 @@ export const user = createApi({
                 method: 'POST',
                 body: data,
             }),
-        })
+            invalidatesTags: ['user'],
+        }),
+        DeleteInfo: builder.mutation({
+            query: (Id) => ({
+                url: 'api/user/delete',
+                method: 'DELETE',
+                body: Id
+            }),
+            invalidatesTags: ['user'],
+        }),
+        getInfo: builder.query({
+            query: () => `api/user/userget`,
+            providesTags: ['user'],
+        }),
+
     })
 })
-export const {useAuthMutation} = user;
+export const { useAuthMutation, useGetInfoQuery, useDeleteInfoMutation } = user;

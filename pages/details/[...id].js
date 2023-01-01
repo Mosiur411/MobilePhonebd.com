@@ -77,24 +77,24 @@ export default function Details() {
             </section>
             {/* Table information  */}
 
-            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-10">
-                    <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+            <div classname="overflow-x-auto relative shadow-md sm:rounded-lg">
+                <table classname="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-10">
+                    <thead classname="text-xs text-gray-700 uppercase dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="py-3 text-xl px-6 bg-gray-50 dark:bg-gray-800">
+                            <th scope="col" classname="py-3 text-xl px-6 bg-gray-50 dark:bg-gray-800">
                                 Product name
                             </th>
-                            <th scope="col" class="py-3 text-xl px-6 bg-gray-50 dark:bg-gray-800">
+                            <th scope="col" classname="py-3 text-xl px-6 bg-gray-50 dark:bg-gray-800">
                             </th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border border-gray-200 dark:border-gray-700">
-                            <th scope="row" class="py-4 px-6 border-r font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                        <tr classname="border border-gray-200 dark:border-gray-700">
+                            <th scope="row" classname="py-4 px-6 border-r font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                 Apple MacBook Pro 17"
                             </th>
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                            <th scope="row" classname="py-4 px-6 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                 Apple MacBook Pro 17"
                             </th>
 

@@ -5,7 +5,6 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useAuthMutation } from "../../app/features/Api/user";
 import auth from "../../firebase.init";
-import Loading from "../shared/Loading";
 export default function LoginModals({ Login, setLogin, handleAccount }) {
     const [PostUser, { isError, isLoading, isSuccess }] = useAuthMutation()
     const [email, setUserName] = useState('')
@@ -21,14 +20,6 @@ export default function LoginModals({ Login, setLogin, handleAccount }) {
             }
             await PostUser(data)
         }
-
-    }
-    if (isError || error) {
-        toast("error Login");
-
-    }
-    if (isLoading || loading) {
-        return <Loading />
 
     }
 

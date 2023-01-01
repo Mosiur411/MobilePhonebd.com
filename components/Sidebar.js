@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AiOutlineHome, AiFillSetting } from "react-icons/ai";
+import { AiOutlineHome, AiFillSetting,AiOutlineUsergroupAdd } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { MdManageAccounts } from "react-icons/md";
@@ -203,6 +203,10 @@ export default function Sidebar() {
           <div onClick={() => router.push('/dashboard/AddProduct')} className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white" >
             <MdOutlineProductionQuantityLimits size={20} />
             <span className="text-[20px]">Add Product</span>
+          </div>
+          <div onClick={() => router.push('/dashboard/User')} className="flex gap-5 items-center cursor-pointer hover:bg-gray-500 rounded px-2 py-1 hover:text-white" >
+            <AiOutlineUsergroupAdd size={20} />
+            <span className="text-[20px]">User</span>
           </div>
 
 

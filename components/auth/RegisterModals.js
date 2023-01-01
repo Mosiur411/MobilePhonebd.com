@@ -37,28 +37,11 @@ export default function RegisterModals({ Register, setRegister, handleAccount })
         }
 
     }
-    if (isError || error) {
-        toast("error Login");
-
-    }
-    if (isLoading || loading) {
-        return <Loading />
-
-    }
     if (isSuccess) {
         setRegister(!Register)
         toast("Successful Login");
 
     }
-
-
-
-
-
-
-
-
-
 
     return (
         <>
